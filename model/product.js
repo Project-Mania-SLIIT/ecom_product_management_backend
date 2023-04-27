@@ -4,10 +4,10 @@ mongoose.set("strictQuery", false);
 const productSchema = mongoose.Schema({
 	supplierId: {
 		type: mongoose.Schema.Types.ObjectId,
-		required: true,
+		required: false,
 		ref: "User",
 	},
-	title: {
+	name: {
 		type: String,
 		required: true,
 	},
@@ -15,11 +15,7 @@ const productSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	productBrand: {
-		type: String,
-		required: false,
-	},
-	productCode: {
+	itemCode: {
 		type: String,
 		required: false,
 		unique: true
@@ -35,10 +31,6 @@ const productSchema = mongoose.Schema({
 	},
 	price: {
 		type: Number,
-		required: false,
-	},
-	usage: {
-		type: String,
 		required: false,
 	},
 	quantity: {

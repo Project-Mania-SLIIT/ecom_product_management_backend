@@ -9,7 +9,13 @@ const Product = require('../model/product');
  * @param {Array} imageUrl
  * @returns {Promise<Object>}
  */
-exports.addProduct = async (productData) => {
+exports.addProduct = async (productData,sId) => {
+  productData.supplierId = sId;
+  //validation
+  const { error } = validateProduct(req.body);
+  if (error)
+    return res.status(400).send({ message: error.details[0].message });
+
   const product = new Product(productData);
   await product.save();
   return product;
@@ -47,6 +53,8 @@ exports.getProductsBySupplierId = async (id) => {
  * @returns {Promise<Object>}
  */
 exports.updateProduct = async (id, updates) => {
+  console.log(updates);
+  console.log(id)
   const product = await Product.findByIdAndUpdate(id, updates, { new: true }); 
   if (!product) {
     throw new Error('Product not found');

@@ -1,4 +1,5 @@
 const express = require("express");
+const { protectUser } = require("../middleware/authUserMiddleware.js");
 const {
 	addProduct,
 	getProducts,
@@ -10,16 +11,16 @@ const {
 } = require("../controllers/product.controller.js");
 const router = express.Router();
 
-router.route("/").get(getProducts);
-router.route("/:id").get(getProductById);
+router.route("/").get(protectUser,getProducts);
+router.route("/:id").get(protectUser,getProductById);
 
 router
 	.route("/supplier/:id")
-	.post( addProduct)
-	.get( getProductsBySupplierId)
-	.put( updateProduct)
-	.delete(deleteProduct);
+	.post( protectUser,addProduct)
+	.get(protectUser, getProductsBySupplierId)
+	.put(protectUser, updateProduct)
+	.delete(protectUser,deleteProduct);
 
-router.route("/:title").get(searchProduct);
+router.route("/:title").get(protectUser,searchProduct);
 
 module.exports = router;

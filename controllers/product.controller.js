@@ -6,8 +6,9 @@ const productService = require('../services/product.service');
  * @returns {Response}
  **/
 exports.addProduct = async (req, res, next) => {
+  console.log(req.body);
   try {
-    const product = await productService.addProduct(req.body);
+    const product = await productService.addProduct(req.body,req.params.id);
     res.status(201).json(product);
   } catch (err) {
     next(err);
