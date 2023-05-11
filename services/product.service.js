@@ -11,8 +11,7 @@ const Product = require('../model/product');
  */
 exports.addProduct = async (productData,sId) => {
 
-
-
+  productData.supplierId = "645caeb825205212879b6dbb";
   const product = new Product(productData);
   await product.save();
   return product;
