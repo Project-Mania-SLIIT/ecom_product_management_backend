@@ -18,7 +18,7 @@ const productSchema = mongoose.Schema({
 	itemCode: {
 		type: String,
 		required: false,
-		unique: true
+		
 	},
 	description: {
 		type: String,
@@ -37,6 +37,12 @@ const productSchema = mongoose.Schema({
 		type: Number,
 		required: false,
 	},
+	productCode: {
+		type: String,
+		required: true,
+		unique: false ,
+		default: "001"
+	  },
 });
 
 const Product = mongoose.model("Product", productSchema);
