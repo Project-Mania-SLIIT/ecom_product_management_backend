@@ -11,16 +11,16 @@ const {
 } = require("../controllers/product.controller.js");
 const router = express.Router();
 
-router.route("/").get(protectUser,getProducts);
-router.route("/:id").get(protectUser,getProductById);
+router.route("/").get(getProducts);
+router.route("/:id").get(getProductById);
 
 router
 	.route("/supplier/:id")
-	.post( protectUser,addProduct)
-	.get(protectUser, getProductsBySupplierId)
-	.put(protectUser, updateProduct)
-	.delete(protectUser,deleteProduct);
+	.post(addProduct)
+	.get(getProductsBySupplierId)
+	.put(updateProduct)
+	.delete(deleteProduct);
 
-router.route("/:title").get(protectUser,searchProduct);
+router.route("/:title").get(searchProduct);
 
 module.exports = router;
