@@ -10,12 +10,8 @@ const Product = require('../model/product');
  * @returns {Promise<Object>}
  */
 exports.addProduct = async (productData,sId) => {
-  productData.supplierId = sId;
-  //validation
-  const { error } = validateProduct(req.body);
-  if (error)
-    return res.status(400).send({ message: error.details[0].message });
 
+  productData.supplierId = "645caeb825205212879b6dbb";
   const product = new Product(productData);
   await product.save();
   return product;

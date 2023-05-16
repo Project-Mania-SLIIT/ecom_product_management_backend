@@ -16,9 +16,9 @@ router.route("/:id").get(getProductById);
 
 router
 	.route("/supplier/:id")
-	.post(addProduct)
-	.get(getProductsBySupplierId)
-	.put(updateProduct)
+	.post( addProduct)
+	.get( getProductsBySupplierId)
+	.put( updateProduct)
 	.delete(deleteProduct);
 
 router.route("/:title").get(searchProduct);

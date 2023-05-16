@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.set("strictQuery", false);
+
 
 const productSchema = mongoose.Schema({
 	supplierId: {
@@ -18,7 +18,6 @@ const productSchema = mongoose.Schema({
 	itemCode: {
 		type: String,
 		required: false,
-		unique: true
 	},
 	description: {
 		type: String,
